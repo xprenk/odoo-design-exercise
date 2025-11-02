@@ -1,0 +1,750 @@
+// ============================================================================
+// Bootstrap Imports & Configuration
+// ============================================================================
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+
+// ============================================================================
+// Custom Theme Colors
+// ============================================================================
+
+$custom-colors: (
+	"odoo-blue": #038aff,
+	"odoo-yellow": #febd3d,
+	"odoo-green": #5ccaa7,
+	"odoo-dark": #1e2047,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// ============================================================================
+// Custom Spacers
+// ============================================================================
+
+$additional-spacers: (
+	6: $spacer * 6,
+);
+
+$spacers: map-merge($spacers, $additional-spacers);
+
+// ============================================================================
+// Custom Shadows
+// ============================================================================
+
+$box-shadow-xl: 0 0rem 3rem rgba($black, 0.125);
+
+// ============================================================================
+// Bootstrap Utilities Configuration
+// ============================================================================
+
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+	$utilities,
+	(
+		"shadow": (
+			property: box-shadow,
+			class: shadow,
+			values: (
+				null: var(--#{$prefix}box-shadow),
+				sm: var(--#{$prefix}box-shadow-sm),
+				lg: var(--#{$prefix}box-shadow-lg),
+				xl: $box-shadow-xl,
+				none: none,
+			),
+		),
+		"rounded": (
+			property: border-radius,
+			class: rounded,
+			values: (
+				null: var(--#{$prefix}border-radius),
+				0: 0,
+				1: var(--#{$prefix}border-radius-sm),
+				2: var(--#{$prefix}border-radius),
+				3: var(--#{$prefix}border-radius-lg),
+				4: var(--#{$prefix}border-radius-xl),
+				5: var(--#{$prefix}border-radius-xxl),
+				6: 3rem,
+				7: 4rem,
+				8: 5rem,
+				9: 6rem,
+				circle: 50%,
+				pill: var(--#{$prefix}border-radius-pill),
+			),
+		),
+		"rounded-top": (
+			property: border-top-left-radius border-top-right-radius,
+			class: rounded-top,
+			values: (
+				null: var(--#{$prefix}border-radius),
+				0: 0,
+				1: var(--#{$prefix}border-radius-sm),
+				2: var(--#{$prefix}border-radius),
+				3: var(--#{$prefix}border-radius-lg),
+				4: var(--#{$prefix}border-radius-xl),
+				5: var(--#{$prefix}border-radius-xxl),
+				6: 3rem,
+				7: 4rem,
+				8: 5rem,
+				9: 6rem,
+				circle: 50%,
+				pill: var(--#{$prefix}border-radius-pill),
+			),
+		),
+		"rounded-end": (
+			property: border-top-right-radius border-bottom-right-radius,
+			class: rounded-end,
+			values: (
+				null: var(--#{$prefix}border-radius),
+				0: 0,
+				1: var(--#{$prefix}border-radius-sm),
+				2: var(--#{$prefix}border-radius),
+				3: var(--#{$prefix}border-radius-lg),
+				4: var(--#{$prefix}border-radius-xl),
+				5: var(--#{$prefix}border-radius-xxl),
+				6: 3rem,
+				7: 4rem,
+				8: 5rem,
+				9: 6rem,
+				circle: 50%,
+				pill: var(--#{$prefix}border-radius-pill),
+			),
+		),
+		"rounded-bottom": (
+			property: border-bottom-right-radius border-bottom-left-radius,
+			class: rounded-bottom,
+			values: (
+				null: var(--#{$prefix}border-radius),
+				0: 0,
+				1: var(--#{$prefix}border-radius-sm),
+				2: var(--#{$prefix}border-radius),
+				3: var(--#{$prefix}border-radius-lg),
+				4: var(--#{$prefix}border-radius-xl),
+				5: var(--#{$prefix}border-radius-xxl),
+				6: 3rem,
+				7: 4rem,
+				8: 5rem,
+				9: 6rem,
+				circle: 50%,
+				pill: var(--#{$prefix}border-radius-pill),
+			),
+		),
+		"rounded-start": (
+			property: border-bottom-left-radius border-top-left-radius,
+			class: rounded-start,
+			values: (
+				null: var(--#{$prefix}border-radius),
+				0: 0,
+				1: var(--#{$prefix}border-radius-sm),
+				2: var(--#{$prefix}border-radius),
+				3: var(--#{$prefix}border-radius-lg),
+				4: var(--#{$prefix}border-radius-xl),
+				5: var(--#{$prefix}border-radius-xxl),
+				6: 3rem,
+				7: 4rem,
+				8: 5rem,
+				9: 6rem,
+				circle: 50%,
+				pill: var(--#{$prefix}border-radius-pill),
+			),
+		),
+	)
+);
+
+// ============================================================================
+// Bootstrap Final Imports
+// ============================================================================
+
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// ============================================================================
+// External Fonts
+// ============================================================================
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+// ============================================================================
+// Base Styles
+// ============================================================================
+
+body {
+	font-family: "Nunito Sans", sans-serif;
+}
+
+// ============================================================================
+// Header & Mobile Offcanvas
+// ============================================================================
+
+.mobile-offcanvas {
+	background-color: map-get($theme-colors, "odoo-blue");
+	color: #fff;
+	width: min(90vw, 360px);
+
+	.offcanvas-header {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.btn-close {
+		filter: invert(1) grayscale(100%) brightness(200%);
+	}
+
+	.nav-link {
+		color: rgba(255, 255, 255, 0.9);
+		padding: 0.5rem 0;
+
+		&:hover,
+		&:focus {
+			color: #fff;
+		}
+	}
+}
+
+// ============================================================================
+// Navigation & Link Hover States
+// ============================================================================
+
+.navbar {
+	.nav-link {
+		position: relative;
+		transition: color 0.2s ease-in-out;
+
+		&::after {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 2px;
+			bottom: -4px;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: currentColor;
+			transition: width 0.2s ease-in-out;
+		}
+
+		&:hover {
+			color: rgba(255, 255, 255, 1) !important;
+
+			&::after {
+				width: 100%;
+			}
+		}
+	}
+}
+
+a:not(.btn):not(.navbar-brand):not(.nav-link) {
+	transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+	&:hover {
+		opacity: 0.7;
+	}
+}
+
+.card-link {
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		border-width: 3px !important;
+		padding-bottom: 0.25rem;
+		opacity: 0.7;
+	}
+}
+
+footer a {
+	transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+	&:hover {
+		color: rgba(255, 255, 255, 1) !important;
+		opacity: 1 !important;
+	}
+}
+
+footer .d-flex.gap-4 a:not(.btn) {
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		color: rgba(255, 255, 255, 1) !important;
+	}
+}
+
+footer .btn-light {
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		color: rgba(3, 138, 255, 1) !important;
+	}
+}
+
+// ============================================================================
+// Anchor Link Scroll Margin
+// ============================================================================
+
+[id] {
+	scroll-margin-top: 96px;
+}
+
+@media (max-width: 767.98px) {
+	[id] {
+		scroll-margin-top: 80px;
+	}
+}
+
+// ============================================================================
+// Navbar Shadow on Scroll
+// ============================================================================
+
+#top {
+	box-shadow: none;
+	transition: box-shadow 0.2s ease-in-out;
+}
+
+#top.navbar-elevated {
+	box-shadow: $box-shadow-xl;
+}
+
+// ============================================================================
+// Layout & Container
+// ============================================================================
+
+@media (max-width: 767px) {
+	.container,
+	section.container {
+		padding-left: 1.5rem !important;
+		padding-right: 1.5rem !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.col-lg-20 {
+		flex: 0 0 auto;
+		width: calc(20% - (1.5rem * 4 / 5));
+	}
+}
+
+.ps-lg-custom-container {
+	@media (max-width: 767px) {
+		padding-left: 1.5rem !important;
+		padding-right: 1.5rem !important;
+	}
+
+	@media (min-width: 768px) {
+		padding-left: calc((100% - 720px) / 2);
+		padding-right: 2%;
+	}
+
+	@media (min-width: 992px) {
+		padding-left: calc((100% - 960px) / 2);
+		padding-right: 2%;
+	}
+
+	@media (min-width: 1200px) {
+		padding-left: calc((100% - 1140px) / 2);
+		padding-right: 2%;
+	}
+
+	@media (min-width: 1400px) {
+		padding-left: calc((100% - 1320px) / 2);
+		padding-right: 2%;
+	}
+}
+
+.pe-lg-custom-end {
+	@media (min-width: 992px) {
+		padding-right: 2%;
+	}
+}
+
+// ============================================================================
+// Clip Path Sections
+// ============================================================================
+
+.header-clip,
+.awards-clip {
+	position: relative;
+	padding-bottom: 4rem;
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), 0 100%);
+}
+
+.footer-clip {
+	position: relative;
+	padding-top: 4rem;
+	clip-path: polygon(0 80px, 100% 0, 100% 100%, 0 100%);
+}
+
+// ============================================================================
+// Components - Accordion
+// ============================================================================
+
+.accordion-item {
+	box-shadow: -0px -1px 3px 0px rgba(0, 0, 0, 0.1), 0px 0px 15px 0px rgba(0, 0, 0, 0.075);
+
+	&:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+}
+
+.accordion-button {
+	background-color: #fff;
+
+	&:not(.collapsed) {
+		background-color: #fff;
+		color: inherit;
+		box-shadow: none;
+	}
+
+	&:focus {
+		box-shadow: none;
+		border-color: rgba(0, 0, 0, 0.125);
+	}
+
+	&::after {
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3e%3c/svg%3e");
+	}
+
+	&:not(.collapsed)::after {
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3e%3c/svg%3e");
+	}
+}
+
+// ============================================================================
+// Components - Progress Bar
+// ============================================================================
+
+.progress-thin {
+	height: 3px;
+	background-color: rgba(0, 0, 0, 0.08);
+}
+
+// ============================================================================
+// Components - Back to Top Button
+// ============================================================================
+
+.back-to-top {
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background-color: #038aff;
+	color: white;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	z-index: 1000;
+
+	&:hover {
+		background-color: darken(#038aff, 10%);
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+
+	&.show {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	svg {
+		width: 32px;
+		height: 32px;
+	}
+
+	@media (max-width: 767px) {
+		bottom: 1rem;
+		right: 1rem;
+		width: 50px;
+		height: 50px;
+
+		svg {
+			width: 25px;
+			height: 25px;
+		}
+	}
+}
+
+// ============================================================================
+// Section - Tools
+// ============================================================================
+
+.tools-media {
+	height: 439px;
+
+	.tools-video {
+		position: relative;
+		left: 250px;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.tools-card {
+		top: 100px;
+		left: 0;
+	}
+
+	.play-badge {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+	}
+
+	@media (max-width: 767px) {
+		.tools-card {
+			width: 100%;
+			margin-left: 0;
+			margin-top: 1rem;
+		}
+	}
+
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.tools-video {
+			left: 150px;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.tools-video {
+			left: 200px;
+		}
+
+		.tools-card {
+			top: 120px;
+		}
+	}
+}
+
+// ============================================================================
+// Section - Technology Cards
+// ============================================================================
+
+.technology-cards {
+	.card {
+		transition: transform 0.2s ease-in-out;
+
+		&:hover {
+			transform: translateY(-4px);
+		}
+	}
+}
+
+// ============================================================================
+// Section - Awards Cards
+// ============================================================================
+
+.awards-container {
+	position: relative;
+}
+
+.awards-scroll-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background-color: #fff;
+	color: #038aff;
+	border: 2px solid #038aff;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+	&:hover {
+		background-color: #038aff;
+		color: #fff;
+		transform: translateY(-50%) scale(1.05);
+	}
+
+	&:active {
+		transform: translateY(-50%) scale(0.95);
+	}
+
+	@media (max-width: 767px) {
+		display: none !important;
+	}
+
+	@media (min-width: 1400px) {
+		display: none !important;
+	}
+}
+
+.awards-scroll-left {
+	left: 1rem;
+}
+
+.awards-scroll-right {
+	right: 1rem;
+}
+
+.awards-cards {
+	height: 450px;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	.card {
+		transition: transform 0.2s ease-in-out;
+
+		&:hover {
+			transform: translateY(-4px);
+		}
+	}
+
+	@media (max-width: 767px) {
+		flex-direction: column !important;
+		overflow: visible;
+		height: auto !important;
+
+		.col-12,
+		.col-sm-6,
+		.col-md-4,
+		.col-lg-20 {
+			width: 100% !important;
+			flex: 0 0 auto;
+		}
+	}
+
+	@media (min-width: 768px) {
+		max-width: none;
+	}
+
+	@media (min-width: 768px) and (max-width: 1399px) {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+
+		.col-md-4 {
+			min-width: 280px;
+			flex: 0 0 auto;
+		}
+	}
+}
+
+// ============================================================================
+// Decorative dotted connectors between sections (lg+ only)
+// ============================================================================
+
+$connector-color: rgba(0, 0, 0, 0.1);
+
+.has-connector {
+	position: relative;
+	overflow: visible;
+}
+
+.section-connector {
+	position: absolute;
+	display: none;
+	pointer-events: none;
+}
+
+@media (min-width: 992px) {
+	.section-connector {
+		display: block;
+	}
+
+	.section-connector path {
+		fill: $connector-color;
+	}
+
+	#tools .connector-to-features {
+		width: 200px;
+		height: 200px;
+		right: 50%;
+		bottom: -130px;
+	}
+
+	#features .connector-to-technology {
+		width: 200px;
+		height: 200px;
+		right: 29%;
+		bottom: -120px;
+		transform: scale(-1, 1);
+	}
+
+	#technology .connector-to-app {
+		width: 200px;
+		height: 200px;
+		right: 50%;
+		bottom: -130px;
+	}
+}
+
+@media (min-width: 1200px) {
+	#tools .connector-to-features {
+		right: 50%;
+		bottom: -140px;
+	}
+	#features .connector-to-technology {
+		right: 32%;
+		bottom: -120px;
+	}
+	#technology .connector-to-app {
+		right: 50%;
+		bottom: -130px;
+	}
+}
+@media (min-width: 1400px) {
+	#tools .connector-to-features {
+		right: 50%;
+		bottom: -150px;
+	}
+	#features .connector-to-technology {
+		right: 34%;
+		bottom: -120px;
+	}
+	#technology .connector-to-app {
+		right: 50%;
+		bottom: -130px;
+	}
+}
+
+// ============================================================================
+// Responsive Utilities
+// ============================================================================
+
+@media (max-width: 767px) {
+	.display-5 {
+		font-size: 2.5rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.w-md-75 {
+		width: 75% !important;
+	}
+
+	.w-md-auto {
+		width: auto !important;
+	}
+
+	.flex-md-basis-50 {
+		flex-basis: 50% !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.w-lg-50 {
+		width: 50% !important;
+	}
+}
