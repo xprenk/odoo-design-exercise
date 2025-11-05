@@ -1,10 +1,10 @@
 # Odoo Design Exercise
 
-A Vite-powered static site using Handlebars partials, Bootstrap 5 (SCSS and JS), and custom SCSS utilities.
+A Vite-powered static site using Bootstrap 5 (SCSS and JS), and custom SCSS utilities.
 
 ## Tech stack
 
-- Vite + `@agilebot/vite-plugin-handlebars`
+- Vite
 - Bootstrap 5.3 (SCSS compiled with Sass, JS imported with ES modules)
 
 ## Scripts
@@ -16,8 +16,8 @@ A Vite-powered static site using Handlebars partials, Bootstrap 5 (SCSS and JS),
 ## Structure
 
 - `src/index.html` – Entry HTML that includes Handlebars partials
-- `src/partials/*.hbs` – Section partials (hero, tools, features, technology, app, solutions, awards, faq, footer)
 - `src/scss/styles.scss` – Bootstrap imports, theme variables, and custom utilities
+- `src/js/main.js` – Bootstrap JS imports and custom JS (awards carousel, back-to-top button, mobile menu)
 
 ## Notes
 
