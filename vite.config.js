@@ -1,6 +1,7 @@
 import { resolve } from "path";
 
 export default {
+	base: process.env.BASE_PATH || "/",
 	root: resolve(__dirname, "src"),
 	publicDir: "../public",
 	build: {
