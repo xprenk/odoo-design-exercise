@@ -1,21 +1,29 @@
+
 # Odoo Design Exercise
+
 
 A Vite-powered static site using Bootstrap 5 (SCSS and JS), and custom SCSS utilities.
 
+
 ## Tech stack
+
 
 - Vite
 - Bootstrap 5.3 (SCSS compiled with Sass, JS imported with ES modules)
 
+
 ## Scripts
+
 
 - `npm run dev` – Start the dev server
 - `npm run build` – Build for production to `dist/`
 - `npm run preview` – Preview the production build
 
+
 ## Structure
 
-- `src/index.html` – Entry HTML that includes Handlebars partials
+
+- `src/index.html` – Website content
 - `src/scss/styles.scss` – Bootstrap imports, theme variables, and custom utilities
 - `src/js/main.js` – Bootstrap JS imports and custom JS (awards carousel, back-to-top button, mobile menu)
 
